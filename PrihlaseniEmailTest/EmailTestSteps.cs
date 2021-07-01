@@ -23,23 +23,23 @@ namespace PrihlaseniEmailTest
             System.Threading.Thread.Sleep(2000);
         }
 
-        [Then(@"jako jmeno zadam (.*)")]
-        public void ThenZadamPrihlasovaciJmeno(string jmeno)
+        [When(@"jako jmeno zadam (.*)")]
+        public void WhenZadamPrihlasovaciJmeno(string jmeno)
         {
             var prihlasJmeno = driver.FindElement(By.Name("username"));
             prihlasJmeno.SendKeys(jmeno);
 
         }
-        [Then(@"jako heslo zadam (.*)")]
-        public void ThenJakoHesloZadam(string heslo)
+        [When(@"jako heslo zadam (.*)")]
+        public void WhenJakoHesloZadam(string heslo)
         {
             var elementHeslo = driver.FindElement(By.Name("password"));
             elementHeslo.SendKeys(heslo);
         }
 
 
-        [Then(@"jako domenu zadam (.*)")]
-        public void ThenZadamHesloAKliknuNaPrihlasit(string domena)
+        [When(@"jako domenu zadam (.*)")]
+        public void WhenZadamHesloAKliknuNaPrihlasit(string domena)
         {
             var elementDomena = driver.FindElement(By.Name("domain"));
             var vybranaDomena = new SelectElement(elementDomena);
@@ -48,8 +48,8 @@ namespace PrihlaseniEmailTest
 
         }
 
-        [Then(@"kliknu na prihlasit")]
-        public void ThenKliknuNaPrihlasit()
+        [When(@"kliknu na prihlasit")]
+        public void WhenKliknuNaPrihlasit()
         {
             var tlacitkoPrihlas = driver.FindElement(By.CssSelector(".input-w-button__button"));
             tlacitkoPrihlas.Click();
@@ -57,14 +57,14 @@ namespace PrihlaseniEmailTest
         }
 
 
-        [Then(@"zkontroluji uspesnost prihlaseni")]
-        public void ThenZkontrolujiUspesnostPrihlaseni()
+        [Then(@"bych mel byt na strance mailu")]
+        public void ThenBychMelBytNaStranceMailu()
         {
             var aktualniAdresa = driver.Url;
             Assert.That(cilovaAdresa.Contains(aktualniAdresa), Is.True);
         }
-        [Then(@"zkontroluji neuspesnost prihlaseni")]
-        public void ThenZkontrolujiNeuspesnostPrihlaseni()
+        [Then(@"bych mel byt na strance neuspesne prihlaseni")]
+        public void ThenBychMelBytNaStranceNeuspesnePrihlaseni()
         {
             var aktualniAdresa = driver.Url;
             Assert.That(!cilovaAdresa.Contains(aktualniAdresa), Is.True);

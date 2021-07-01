@@ -4,11 +4,11 @@
 @mytag
 Scenario: Prihlaseni do emailu 
 	Given jsem na webu seznam.cz
-	Then jako jmeno zadam <jmeno> 
-	Then jako heslo zadam <heslo>
-	Then jako domenu zadam <domena>
-	Then kliknu na prihlasit
-	Then zkontroluji uspesnost prihlaseni
+	When jako jmeno zadam <jmeno> 
+	When jako heslo zadam <heslo>
+	When jako domenu zadam <domena>
+	When kliknu na prihlasit
+	Then bych mel byt na strance mailu
 	Then zavru prohlizec
 
 	Examples: 
@@ -17,11 +17,11 @@ Scenario: Prihlaseni do emailu
 
 Scenario: Spatne prihlaseni do emailu
 	Given jsem na webu seznam.cz
-	Then jako jmeno zadam <jmeno>
-	Then jako domenu zadam <domena>
-	Then jako heslo zadam <heslo>
-	Then kliknu na prihlasit
-	Then zkontroluji neuspesnost prihlaseni
+	When jako jmeno zadam <jmeno>
+	When jako domenu zadam <domena>
+	When jako heslo zadam <heslo>
+	When kliknu na prihlasit
+	Then bych mel byt na strance neuspesne prihlaseni
 	Then zavru prohlizec
 	
 	Examples: 
